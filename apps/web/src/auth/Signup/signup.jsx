@@ -1,4 +1,4 @@
-import {useState , useEffect} from 'react';
+import {useState} from 'react';
 import '../../styles/Signup.css';
 import { UserPlus ,CircleCheckBig } from "lucide-react"; 
 import { FcGoogle } from "react-icons/fc";
@@ -6,34 +6,16 @@ import { FcGoogle } from "react-icons/fc";
 export default function Signup(){
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [passLen, setPassLen] = useState(false);
-    const [digit, setDigit] = useState(false);
-    const [error,setError]=useState('Error!!')
-
+    
     // This function will be used for showing loading page and other error on authentication after backend is ready
-    function handleSubmit(e){
-        e.preventDefault();
-    }
+    // function handleSubmit(e){
+    //     e.preventDefault();
+    // }
 
     // This useEffect is here to check the password strength
 
-    useEffect(()=>{
-
-            if (password.length>=8){
-                setPassLen(true);
-            }
-            else{
-                setPassLen(false);
-            }
-            
-            if (/\d/.test(password)){
-                setDigit(true);
-            } 
-            else{
-                setDigit(false);
-            }
-
-    },[password])
+    const passLen = password.length >= 8;
+    const digit = /\d/.test(password);
 
 
     return (<div style={{background:'url(/Signup.png)' , overflow:'hidden', backgroundSize:'cover', backgroundPosition:'center',backgroundRepeat:'no-repeat', margin:'0px',height:'100vh', width:'100vw'}} >
